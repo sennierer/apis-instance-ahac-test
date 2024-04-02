@@ -1,0 +1,42 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/postgres
+{
+	"name": "ÖBL apis-rdf",
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"mhutchie.git-graph",
+				"eamodio.gitlens",
+				"GitHub.vscode-pull-request-github",
+				"GitHub.copilot-chat",
+				"ms-python.black-formatter",
+				"monosans.djlint",
+				"charliermarsh.ruff",
+				"batisteo.vscode-django",
+				"ms-python.python"
+			]
+		}
+	},
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// This can be used to network with other containers or the host.
+	"forwardPorts": [
+		8000,
+		5432
+	],
+	"remoteEnv": {
+		"DJANGO_SETTINGS_MODULE": "apis_ontology.settings",
+		"DATABASE_URL": "postgres://postgres:postgres@db:5432/postgres",
+		"SECRET_KEY": "@uic$$@r&la39*st4h+iogy*yq#&5f%6@jm!hsub_awlxx(#d)"
+	},
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "cd apis-instance-oebl-pnp && poetry config virtualenvs.create false && poetry lock && poetry install && cd ../apis-core-rdf && poetry config virtualenvs.create false && poetry lock && poetry install --no-root --only dev"
+	// Configure tool-specific properties.
+	// "customizations": {},
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	// "remoteUser": "root"
+}

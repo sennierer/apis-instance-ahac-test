@@ -1,0 +1,40 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Local DB",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/apis-instance-oebl-pnp/manage.py",
+            "args": [
+                "runserver"
+            ],
+            "django": true,
+            "justMyCode": false,
+            "env": {
+                "DJANGO_SETTINGS_MODULE": "apis_ontology.settings",
+                "DATABASE_URL": "postgres://postgres:postgres@db:5432/postgres",
+                "SECRET_KEY": "@uic$$@r&la39*st4h+iogy*yq#&5f%6@jm!hsub_awlxx(#d)"
+            }
+        },
+        {
+            "name": "Local oebl pnp DB",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/apis-instance-oebl-pnp/manage.py",
+            "args": [
+                "runserver"
+            ],
+            "django": true,
+            "justMyCode": false,
+            "env": {
+                "DJANGO_SETTINGS_MODULE": "apis_ontology.settings",
+                "DATABASE_URL": "postgres://postgres:postgres@db:5432/apis_oebl_pnp",
+                "SECRET_KEY": "@uic$$@r&la39*st4h+iogy*yq#&5f%6@jm!hsub_awlxx(#d)"
+            }
+        },
+    ]
+}
